@@ -1,0 +1,13 @@
+public class Helloworld {
+  public static void main(String[] args) {
+    //Drop Notes
+    //Tool
+    //1. System.out.println("abc")
+
+    //Every line of Java lines must end with ;
+    System.out.println("Hello world!!!");
+    System.out.println("Hello world!!!");
+    System.out.println("Hello world!!!");
+
+  }
+}
