@@ -1,6 +1,9 @@
+// byte, short, int, long
+// float, double
+// char, boolean
 public class DemoPrimitive {
   public static void main(String[] args) {
-  // 整數 integer
+    // 整數 integer
 
     // from right to left (put value 3 into a box x)
     // ! Declaration (declare the type of x)
@@ -96,10 +99,8 @@ public class DemoPrimitive {
     j = 10;
     System.out.println(j); // 10
 
-
-
-
-
-
+    char c2 = ' '; // OK
+    // char c3 = ''; // No character, ERROR
+    // char c4 = 'ab'; // ERROR
   }
 }
