@@ -107,9 +107,7 @@ public class DemoLoop2 {
       String Password = "";
       for(int i = 0; i < pW.length(); i++){
         char passWord = pW.charAt(i);
-        
         Password += (char) (passWord + 3);
-        
       }
 System.out.println(Password);
     }

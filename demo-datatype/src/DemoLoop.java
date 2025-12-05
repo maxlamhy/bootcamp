@@ -95,5 +95,94 @@ public class DemoLoop {
       result += (char) i; // String + any type of value -> String
     }
     System.out.println(result);
+
+    // ! break -> exit earlier
+    // the first number between 1 - 50, which is divided by 7.
+    int target = -1;
+    for(int i = 1; i <= 50; i++){
+      
+      if( i % 7 == 0) {
+        target = i;
+        break; //break loop
+        
+      }
+      if (target == -1) {
+        System.out.println("Not Found.");
+      } else {
+       System.out.println(target); 
+      }
+      
+    }
+
+//Find the largest number < 1000, divided by 7
+for(int i = 1000; i >= 0; i--){
+  if(i % 7 == 0){
+    System.out.println(i);
+    break; 
+  }
+}
+    
+String currentTime = "23:42:00";
+int secondToAdd = 6500;
+int addSec = 23*60*60 + 42*60 + 6500;
+int divideHr = addSec/60/60;
+
+//Keep double a given number, until it just > 10000. What is the number?
+int n = 9;
+while(n<=10000){
+  n *= 2;
+}
+System.out.println(n);
+
+String s10 = "HELLOXWORLD";
+//Find the index of 'X', -1 if not found.
+//i.e. Use loop, not indexOf()
+
+int index1 = -1; // 預設為 -1，表示沒找到
+        
+        for (int i = 0; i < s10.length(); i++) {
+            if (s10.charAt(i) == 'X') {
+                index1 = i;
+                break;
+        
+            }
+            
+          }System.out.println(index1);
+
+    //Prime numbers between 1 - 50
+        for (int num = 2; num <= 50; num++) {        // 從 2 開始（1 不是質數）
+            boolean isPrime = true;                  // 先假設它是質數
+
+            for (int i = 2; i < num; i++) {          // 用 2 到 num-1 去試除
+                if (num % i == 0) {                  // 如果被整除 → 不是質數
+                    isPrime = false;
+                    break;                           // 找到一個就夠了，馬上跳出
+                }
+            }
+
+            if (isPrime) {
+                System.out.print(num + " ");
+            }
+        }
+ 
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++){
+        System.out.println("i=" + i + ", j=" + j);
+    }
+  }
+
+  // *
+  // **
+  // ***
+  // ****
+  int k = 4;
+  for(int i = 0; i < k; i++){ //row
+    for(int j = 0; j < k; j++){ //
+
+    }
+  }
+
+
+
   }
 }

@@ -1,8 +1,18 @@
 public class testing {
   public static void main(String[] args) {
     
-    String s = "goodbye";
-    System.out.println(s.substring(2, 5));
+    
+    // *
+    // **
+    // ***
+    // ****
+    int k = 4;
+    String star = "";
+    for (int i = 0; i < k; i++) {
+       System.out.println(star+="*");
   }
-  
 }
+}
+
+
+
