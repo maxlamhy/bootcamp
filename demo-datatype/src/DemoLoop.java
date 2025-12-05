@@ -69,7 +69,7 @@ public class DemoLoop {
       }
     }
     System.out.println(isLeapYear);
-    
+
     isLeapYear = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
     System.out.println(isLeapYear);
 
@@ -87,11 +87,12 @@ public class DemoLoop {
         count++;
       }
     }
-    System.out.println("the number of values between 1 - 100 divided by 6: " + count);
+    System.out
+        .println("the number of values between 1 - 100 divided by 6: " + count);
 
     // convert 1-100 to char values, then concat them together
     String result = "";
-    for (int i = 1; i <= 100; i++){
+    for (int i = 1; i <= 100; i++) {
       result += (char) i; // String + any type of value -> String
     }
     System.out.println(result);
@@ -99,90 +100,146 @@ public class DemoLoop {
     // ! break -> exit earlier
     // the first number between 1 - 50, which is divided by 7.
     int target = -1;
-    for(int i = 1; i <= 50; i++){
-      
-      if( i % 7 == 0) {
+    for (int i = 1; i <= 50; i++) {
+      if (i % 7 == 0) {
         target = i;
-        break; //break loop
-        
+        break; // break loop
       }
-      if (target == -1) {
-        System.out.println("Not Found.");
+    }
+    if (target == -1) {
+      System.out.println("Not Found.");
+    } else {
+      System.out.println("Target=" + target);
+    }
+
+    // ! continue -> skip the rest
+    for (int i = 0; i < 20; i++) {
+      if (i % 2 == 0) {
+        System.out.println("Hello!!");
+        continue; // goes to modifier (i++)
+      }
+      System.out.println("Goodbye!!");
+      // 1000 lines....
+    }
+
+    for (int i = 0; i < 20; i++) {
+      if (i % 2 == 0) {
+        System.out.println("Hello!!");
       } else {
-       System.out.println(target); 
+        System.out.println("Hello!!");
+        System.out.println("Goodbye!!");
       }
-      
     }
 
-//Find the largest number < 1000, divided by 7
-for(int i = 1000; i >= 0; i--){
-  if(i % 7 == 0){
-    System.out.println(i);
-    break; 
-  }
-}
-    
-String currentTime = "23:42:00";
-int secondToAdd = 6500;
-int addSec = 23*60*60 + 42*60 + 6500;
-int divideHr = addSec/60/60;
+    // Find the largest number < 1000, divided by 7
+    int largestNumber = 0;
+    for (int i = 0; i < 1000; i += 7) {
+      largestNumber = i;
+    }
+    System.out.println(largestNumber);
 
-//Keep double a given number, until it just > 10000. What is the number?
-int n = 9;
-while(n<=10000){
-  n *= 2;
-}
-System.out.println(n);
+    largestNumber = 0;
+    while (true) {
+      if (largestNumber + 7 >= 1000) {
+        break;
+      }
+      largestNumber += 7;
+    }
+    System.out.println(largestNumber);
 
-String s10 = "HELLOXWORLD";
-//Find the index of 'X', -1 if not found.
-//i.e. Use loop, not indexOf()
 
-int index1 = -1; // 預設為 -1，表示沒找到
-        
-        for (int i = 0; i < s10.length(); i++) {
-            if (s10.charAt(i) == 'X') {
-                index1 = i;
-                break;
-        
-            }
-            
-          }System.out.println(index1);
+    String currentTime = "23:42:00";
+    int secondToAdd = 6500;
+    int currentHour =
+        (currentTime.charAt(0) - '0') * 10 + (currentTime.charAt(1) - '0');
+    int currentMinute =
+        (currentTime.charAt(3) - '0') * 10 + (currentTime.charAt(4) - '0');
+    int currentSecond =
+        (currentTime.charAt(6) - '0') * 10 + (currentTime.charAt(7) - '0');
+    int currentTimeInSecond =
+        currentHour * 60 * 60 + currentMinute * 60 + currentSecond;
 
-    //Prime numbers between 1 - 50
-        for (int num = 2; num <= 50; num++) {        // 從 2 開始（1 不是質數）
-            boolean isPrime = true;                  // 先假設它是質數
+    int todayTotalSecond = (currentTimeInSecond + secondToAdd) % (24 * 60 * 60);
+    System.out.println(todayTotalSecond); // 5420
 
-            for (int i = 2; i < num; i++) {          // 用 2 到 num-1 去試除
-                if (num % i == 0) {                  // 如果被整除 → 不是質數
-                    isPrime = false;
-                    break;                           // 找到一個就夠了，馬上跳出
-                }
-            }
+    int todayHour = todayTotalSecond / (60 * 60); // prefix 0
+    int todayMinute = todayTotalSecond % (60 * 60) / 60; // prefix 0
+    int todaySecond = todayTotalSecond % (60 * 60) % 60;
 
-            if (isPrime) {
-                System.out.print(num + " ");
-            }
+    String todayHourInString = (todayHour < 10 ? "0" : "") + todayHour;
+    String todayMinuteInString = (todayMinute < 10 ? "0" : "") + todayMinute;
+    String todaySecondInString = (todaySecond < 10 ? "0" : "") + todaySecond;
+
+    String todayTime = todayHourInString + ":" + todayMinuteInString + ":"
+        + todaySecondInString;
+    System.out.println(todayTime); // 01:30:20
+
+    // Keep double a given number, until it just > 10000. What is the number?
+    int n = 9;
+    target = n;
+    while (target <= 10000) {
+      if (target * 2 > 10000) {
+        target *= 2;
+        break;
+      }
+      target *= 2;
+    }
+    System.out.println(target);
+
+    String s10 = "HELLOXWORLD";
+    // Find the index of 'X', -1 if not Found.
+    // i.e. Use loop, not indexOf()
+    int idx = -1;
+    for (int i = 0; i < s10.length(); i++) {
+      if (s10.charAt(i) == 'X') {
+        idx = i;
+        break;
+      }
+    }
+    System.out.println("The index of X=" + idx);
+
+    // check if the number is prime
+    int number = 47; // true
+    boolean isPrime = true;
+    if (number >= 2) {
+      for (int i = 2; i < number; i++) {
+        if (number % i == 0) {
+          isPrime = false;
+          break;
         }
- 
+      }
+    } else {
+      isPrime = false;
+    }
+    if (isPrime) {
+      System.out.println("The number " + number + " is a prime.");
+    } else {
+      System.out.println("The number " + number + " is not a prime.");
+    }
+
+    // outer loop
     for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++){
+      // inner loop
+      for (int j = 0; j < 3; j++) {
         System.out.println("i=" + i + ", j=" + j);
+      }
     }
-  }
 
-  // *
-  // **
-  // ***
-  // ****
-  int k = 4;
-  for(int i = 0; i < k; i++){ //row
-    for(int j = 0; j < k; j++){ //
-
+    // *
+    // **
+    // ***
+    // ****
+    int k = 4;
+    for (int i = 0; i < k; i++) { // row
+      for (int j = 0; j < i + 1; j++) { // print *
+        System.out.print("*");
+      }
+      System.out.println();
     }
-  }
 
-
+    // *
+    // ***
+    // *****
 
   }
 }

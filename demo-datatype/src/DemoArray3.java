@@ -74,7 +74,6 @@ int backup = -1;
 int [] ages = new int[] {16, 66, 18, 37};
 char [] genders = new char[] {'M', 'F', 'M', 'F'};
 boolean [] smokers = new boolean [] {false, true, true, false};
-
 for (int i = 0; i < ages.length; i++) {
   int fee = 0;
   if (ages[i] > 60){
