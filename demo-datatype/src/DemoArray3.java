@@ -1,92 +1,113 @@
 import java.util.Arrays;
 
 public class DemoArray3 {
+  // Exercise
   public static void main(String[] args) {
-    
-    // array 10, 25, 3, 48, 57
-    //print all numbers
-
-    int[] array = new int [] {10, 25, 3, 48, 57};
-    for (int i = 0; i < array.length; i++) {
-      System.out.println(array[i]);
-  }
-  
-  // scores 23, 44, 67, 88, 91, 12
-  // loop -> print all even numbers
-
-  int[] scores = new int [] {23, 44, 67, 88, 91, 12};
-  for (int i = 0; i < scores.length; i++) {
-    if(scores[i] % 2 == 0){
-      System.out.println(scores[i]);
+    // 10, 25, 3, 48, 57
+    // print all numbers
+    int[] arr = new int[] {10, 25, 3, 48, 57};
+    for (int i = 0; i < arr.length; i++) {
+      System.out.println(arr[i]);
     }
-  }
+    // scores 23, 44, 67, 88, 91, 12
+    // loop -> print all even numbers
+    int[] scores = new int[] {23, 44, 67, 88, 91, 12};
+    for (int i = 0; i < scores.length; i++) {
+      if (scores[i] % 2 == 0) {
+        System.out.println(scores[i]);
+      }
+    }
 
-  // Find the median, 34, 78, 12, 89, 45, 99, 23
-int [] median = new int[] {34, 78, 12, 89, 45, 99, 23};
-int backup = -1;
-  for (int i = 0; i < median.length - 1; i++) {
-      for (int j = 0; j < median.length - i - 1; j++) {
-        if (median[j] > median[j + 1]) {
-          backup = median[j];
-          median[j] = median[j + 1];
-          median[j + 1] = backup;
+    // Find the median, 34, 78, 12, 89, 45, 99, 23
+    int[] values = new int[] {34, 78, 12, 89, 45, 99, 23};
+    int medianIdx = values.length / 2;
+    int backup = -1;
+
+    for (int i = 0; i < medianIdx + 1; i++) { // ! control the number of moving max
+      for (int j = 0; j < values.length - i - 1; j++) { // control the moving max position
+        if (values[j] > values[j + 1]) {
+          backup = values[j];
+          values[j] = values[j + 1];
+          values[j + 1] = backup;
         }
       }
     }
-    System.out.println(Arrays.toString(median));
-    System.out.println(median[3]);
+    System.out.println("Median=" + values[medianIdx]); // 45
 
-    // price 99.9, 13.8, 9.9, 1200.0
+    // prices 99.9, 13.8, 9.9, 1200.0
     // quantities 3, 10, 12, 20
     // amounts (amount = price * quantity)
-    double amounts = 0.0;
-    double [] price = new double[] {99.9, 13.8, 9.9, 1200.0};
-    int [] quantities = new int[] {3, 10, 12, 20};
-    for (int i = 0; i < price.length; i++) {
-        amounts += price[i] * quantities[i];
+    double[] prices = new double[] {99.9, 13.8, 9.9, 1200.0};
+    int[] quantities = new int[] {3, 10, 12, 20};
+    double[] amounts = new double[prices.length];
+    for (int i = 0; i < amounts.length; i++) {
+      amounts[i] = prices[i] * quantities[i];
     }
-    System.out.println(amounts);
-
+    System.out.println(Arrays.toString(amounts));
 
     //
     String[] usernames = new String[] {"johnwong", "stevenchan", "jennyng"};
-    String[] password = new String[] {"abcd1234", "ijk789", "xyz456"};
+    String[] passwords = new String[] {"abcd1234", "ijk789", "xyz456"};
 
     String usernameInput = "stevenchan";
     String passwordInput = "ijk789";
 
     // 1. Username is NOT Found.
-    // 2. Password is wrong (Scenario: Username is found.)
+    // 2. Password is wrong. (Scenario: Username is found.)
     // 3. Login success.
+
+    int userIdx = -1;
+    for (int i = 0; i < usernames.length; i++) {
+      if (usernameInput.equals(usernames[i])) {
+        userIdx = i;
+        break;
+      }
+    }
+    if (userIdx == -1) {
+      System.out.println("User is NOT Found.");
+    } else {
+      if (passwordInput.equals(passwords[userIdx])) {
+        System.out.println("Login success.");
+      } else {
+        System.out.println("Password is wrong.");
+      }
+    }
 
     // ages 16, 66, 18, 37
     // genders 'M', 'F', 'M', 'F'
     // smokers false, true, true, false
+    int[] ages = new int[] {16, 66, 18, 37};
+    char[] genders = new char[] {'M', 'F', 'M', 'F'};
+    boolean[] smokers = new boolean[] {false, true, true, false};
 
     // baseFee = 100
-
-    // 1. Smoker -> 20% fee
+    // 1. Smoker -> +20% fee
     // 2. age > 60 -> +30% fee
     // 3. genders female -> +5% fee
 
     // calculate fees
+    int percentage = 0;
+    double baseFee = 100.0;
+    double[] fees = new double[ages.length];
+    for (int i = 0; i < fees.length; i++) {
+      percentage = 0;
+      if (smokers[i]) {
+        percentage += 20;
+      }
+      if (ages[i] > 60) {
+        percentage += 30;
+      }
+      if (genders[i] == 'F') {
+        percentage += 5;
+      }
+      fees[i] = baseFee * (1 + percentage / 100.0);
+    }
+    System.out.println("Fees=" + Arrays.toString(fees));
 
-int [] ages = new int[] {16, 66, 18, 37};
-char [] genders = new char[] {'M', 'F', 'M', 'F'};
-boolean [] smokers = new boolean [] {false, true, true, false};
-for (int i = 0; i < ages.length; i++) {
-  int fee = 0;
-  if (ages[i] > 60){
-    fee += 30;
-  }
-  if (genders[i] == 'F'){
-    fee += 5;
-  }
-  if (smokers[i] == true){
-    fee += 20;
-  }
-  System.out.println(100 * (1 + fee/100.0));
-}
+    // toCharArray()
+    String staff = "John";
+    char[] chs = staff.toCharArray();
+    System.out.println(Arrays.toString(chs)); // [J, o, h, n]
 
-}
+  }
 }
