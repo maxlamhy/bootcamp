@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class testing {
+public class Person {
   // height, weight
   private double height; // meter
   private double weight; // kg

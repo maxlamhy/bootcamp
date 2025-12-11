@@ -241,5 +241,26 @@ public class DemoLoop {
     // ***
     // *****
 
+    int o = 0;
+    while (o < 1000) {
+      if (o % 2 == 0) {
+        o++; // flexible for modifier
+      }
+      if (o % 7 == 0) {
+        o++;
+      }
+      o++;
+      if (o > 20)
+        break;
+    }
+    System.out.println("o=" + o);
+
+    for (int i = 0; i < 10; i++) { // explicitly you know the number of iteration.
+      // Normally, we won't use additional modifier in the for loop content
+      System.out.println("hello");
+    }
+
+    
+
   }
 }

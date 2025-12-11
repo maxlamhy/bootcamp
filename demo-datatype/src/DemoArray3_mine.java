@@ -93,6 +93,20 @@ for (int i = 0; i < ages.length; i++) {
 String staff = "John";
 char[] chs = staff.toCharArray();
 
+//lowercase letter
+char[]characters = new char[] {'a', 'z', 'b', 'a', 'c', 'c', 'a'};
+
+//which letter has the max count.
+//Step 1: new int[26], count each letter
+//Step 2: find max.
+int [] counts = new int [26];
+for(int i = 0; i < characters.length; i++ ){
+  
+}
+
+
+int x = 'a';
+System.out.println(x);
 
 
 }
